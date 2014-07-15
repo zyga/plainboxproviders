@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'haystack',
     'providerbackend',
+    'providerfrontend',
 )
 
 MIDDLEWARE_CLASSES = (
