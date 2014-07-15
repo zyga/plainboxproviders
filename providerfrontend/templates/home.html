@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container">
+  <form role="search" action="search" method="get">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search providers, jobs, units, etc">
+        <span class="input-group-btn">
+          <button class="btn btn-default btn-primary" type="submit">Search</button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
