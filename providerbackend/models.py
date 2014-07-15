@@ -143,7 +143,7 @@ class ProviderMetaData(models.Model):
     A PlainBox provider (metadata), most data (units) is modelled by
     :class:`Unit` below.
     """
-    manage_py = models.OneToOneField(ProviderManagePy)
+    manage_py = models.OneToOneField(ProviderManagePy, primary_key=True)
     # id is not primary_key because we want to help to detect duplicates within
     # the community, it's mostly unique but explicitly not so
     pb_id = models.CharField(max_length=1024)
