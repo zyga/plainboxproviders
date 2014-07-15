@@ -1,0 +1,4 @@
+{{ object.pb_id }} {{ object.version }}
+{{ object.description }}
+{{ object.manage_py.path }}
+{{ object.manage_py.repo }}
