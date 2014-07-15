@@ -171,3 +171,6 @@ class Unit(models.Model):
     unit = models.CharField(max_length=1024)
     provider_metadata = models.ForeignKey(
         ProviderMetaData, verbose_name="related provider")
+
+    def __unicode__(self):
+        return self.pb_id
