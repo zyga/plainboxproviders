@@ -78,7 +78,7 @@ class Repository(models.Model):
     def is_manage_script(self, pathname):
         with open(pathname, 'rt', encoding='UTF-8') as stream:
             for index, line in enumerate(stream):
-                if index > 10:
+                if index > 50:
                     break
                 if 'plainbox.provider_manager' in line:
                     return True
