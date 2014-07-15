@@ -175,8 +175,8 @@ class ProviderMetaData(models.Model):
         return self.pb_id
 
     class Meta:
-        verbose_name = _("provider metadata")
-        verbose_name_plural = _("provider metadata")
+        verbose_name = _("provider metadata object")
+        verbose_name_plural = _("provider metadata objects")
 
 
 class Unit(models.Model):
