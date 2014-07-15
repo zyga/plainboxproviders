@@ -5,6 +5,7 @@ from providerbackend.models import ProviderManagePy
 from providerbackend.models import ProviderMetaData
 from providerbackend.models import Repository
 from providerbackend.models import Unit
+from providerbackend.models import Job
 
 
 class ProviderManagePyInline(admin.StackedInline):
@@ -39,7 +40,15 @@ class UnitAdmin(admin.ModelAdmin):
     list_display = 'pb_id', 'unit'
 
 
+class JobAdmin(admin.ModelAdmin):
+    list_display = 'unit', 'plugin', 'summary'
+    readonly_fields = ('unit', 'name', 'summary', 'plugin', 'command',
+                       'description', 'user', 'environ', 'estimated_duration',
+                       'depends', 'requires', 'shell')
+
+
 admin.site.register(Repository, RepositoryAdmin)
 admin.site.register(ProviderManagePy, ProviderManagePyAdmin)
 admin.site.register(ProviderMetaData, ProviderMetaDataAdmin)
 admin.site.register(Unit, UnitAdmin)
+admin.site.register(Job, JobAdmin)

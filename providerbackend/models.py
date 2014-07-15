@@ -120,6 +120,24 @@ class Repository(models.Model):
             unit_model.unit = unit.unit
             if created:
                 unit_model.save()
+            if unit_model.unit == 'job':
+                self.mirror_job(unit, unit_model)
+
+    def mirror_job(self, job, unit_model):
+        job_model, created = Job.objects.get_or_create(unit=unit_model)
+        job_model.name = job.name
+        job_model.summary = job.summary
+        job_model.plugin = job.plugin
+        job_model.command = job.command
+        job_model.description = job.description
+        job_model.user = job.user
+        job_model.environ = job.environ
+        job_model.estimated_duration = job.estimated_duration
+        job_model.depends = job.depends
+        job_model.requires = job.requires
+        job_model.shell = job.shell
+        if created:
+            job_model.save()
 
 
 class ProviderManagePy(models.Model):
@@ -174,3 +192,21 @@ class Unit(models.Model):
 
     def __unicode__(self):
         return self.pb_id
+
+
+class Job(models.Model):
+    unit = models.OneToOneField(Unit, primary_key=True)
+    name = models.CharField(max_length=1024, null=True)
+    summary = models.CharField(max_length=1024, null=True)
+    plugin = models.CharField(max_length=1024, null=True)
+    command = models.CharField(max_length=1024, null=True)
+    description = models.TextField(null=True)
+    user = models.CharField(max_length=1024, null=True)
+    environ = models.TextField(null=True)
+    estimated_duration = models.CharField(max_length=1024, null=True)
+    depends = models.TextField(null=True)
+    requires = models.TextField(null=True)
+    shell = models.CharField(max_length=1024, null=True)
+
+    def __unicode__(self):
+        return self.unit.pb_id
