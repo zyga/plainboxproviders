@@ -7,6 +7,7 @@ from providerfrontend.views import Home
 
 urlpatterns = patterns('',
     url(r'^$', Home.as_view(), name='home'),
+    url(r'^search/', include('haystack.urls'), name='search'),
     # Examples:
     # url(r'^$', 'plainboxproviders.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),

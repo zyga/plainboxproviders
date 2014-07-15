@@ -1,0 +1,55 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search for Anything</h3>
+    </div>
+
+    <div class="panel-body">
+      <form role="search" action="." method="get">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search providers, units, etc" value="{{ query }}">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-primary" type="submit">Search</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  {% if query %}
+    <ul class="list-group">
+    {% for result in page.object_list %}
+      <li class="list-group-item">{{ result.object }}</li>
+    {% empty %}
+      <li class="list-group-item"><em>No results found</em></li>
+    {% endfor %}
+    </ul>
+    {% if page.has_previous or page.has_next %}
+    <ul class="pager">
+      {% if page.has_previous %}
+      <li class="previous"><a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+      <li class="previous disabled">&laquo;</li>
+      {% endif %}
+      {% if page.has_next %}
+      <li class="next"><a href="?q={{ query }}&amp;page={{ page.next_page_number }}">&raquo;</a></li>
+      {% else %}
+      <li class="next disabled">&raquo;</li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  {% else %}
+  <div class="panel-body">
+    <p>Try searching for <q><a href="?q=checkbox">checkbox</a></q></p>
+  </div>
+    {# Show some example queries to run, maybe query syntax, something else? #}
+  {% endif %}
+  </div>
+
+</div>
+{% endblock %}
