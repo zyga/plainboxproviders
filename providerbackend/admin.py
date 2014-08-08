@@ -19,7 +19,7 @@ class RepositoryAdmin(admin.ModelAdmin):
     inlines = [ProviderManagePyInline]
     actions = ['probe_repo']
 
-    def probe_repo(self, modeladmin, request, queryset):
+    def probe_repo(self, request, queryset):
         for repo in queryset:
             try:
                 repo.probe()
