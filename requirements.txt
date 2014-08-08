@@ -2,6 +2,7 @@ Django==1.6.5
 django-haystack==2.2.0
 dj-database-url==0.3.0
 dj-static==0.0.6
+gunicorn==19.1.0
 plainbox==0.9
 psycopg2==2.5.3
 static3==0.5.1
