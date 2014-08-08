@@ -2,3 +2,5 @@
 db.sqlite3
 __pycache__
 plainboxproviders/whoosh_index/
+venv
+staticfiles
