@@ -59,7 +59,7 @@ class Repository(models.Model):
                 self.url, dirname])
             return dirname
         elif self.vcs == 'git':
-            check_call(['git', 'clone', self.url, dirname])
+            check_call(['git', 'clone', '--depth', '1', self.url, dirname])
             return dirname
         elif self.vcs == 'local':
             return self.url
