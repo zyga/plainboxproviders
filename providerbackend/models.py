@@ -168,7 +168,7 @@ class ProviderMetaData(models.Model):
     # Namespace is currently always derived from the id
     namespace = models.CharField(max_length=1024, editable=False)
     version = models.CharField(max_length=1024)
-    description = models.CharField(max_length=1024, blank=True)
+    description = models.TextField(blank=True)
     gettext_domain = models.CharField(max_length=1024, null=True)
 
     def __unicode__(self):
@@ -197,9 +197,9 @@ class Unit(models.Model):
 class Job(models.Model):
     unit = models.OneToOneField(Unit, primary_key=True)
     name = models.CharField(max_length=1024, null=True)
-    summary = models.CharField(max_length=1024, null=True)
+    summary = models.TextField(null=True)
     plugin = models.CharField(max_length=1024, null=True)
-    command = models.CharField(max_length=1024, null=True)
+    command = models.TextField(null=True)
     description = models.TextField(null=True)
     user = models.CharField(max_length=1024, null=True)
     environ = models.TextField(null=True)
