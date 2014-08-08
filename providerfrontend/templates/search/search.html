@@ -24,7 +24,13 @@
   {% if query %}
     <ul class="list-group">
     {% for result in page.object_list %}
-      <li class="list-group-item">{{ result.object }}</li>
+      {% if result %}
+      <li class="list-group-item">
+      <b>{{ result.object.search_mainline }}</b>
+      <p><em>{{ result.object.summary }}</em></p>
+      <pre>{{ result.object.description}}</pre>
+      </li>
+      {% endif %}
     {% empty %}
       <li class="list-group-item"><em>No results found</em></li>
     {% endfor %}
