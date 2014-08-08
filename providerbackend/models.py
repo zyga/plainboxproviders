@@ -151,6 +151,9 @@ class ProviderManagePy(models.Model):
         help_text=_("path to manage.py within the repository"))
     problem = models.TextField(null=True)
 
+    def __str__(self):
+        return _("{} in {}").format(self.path, self.repo)
+
     class Meta:
         verbose_name = _("provider manage.py file")
         verbose_name_plural = _("provider manage.py files")
