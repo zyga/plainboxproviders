@@ -26,7 +26,7 @@ class RepositoryAdmin(admin.ModelAdmin):
             except Exception as exc:
                 self.message_user(
                     request, "Unable to probe: {0}: {1!r}".format(
-                        self.url, exc), level=messages.ERROR)
+                        repo.url, exc), level=messages.ERROR)
     probe_repo.short_description = _("Probe repository for providers")
 
 
