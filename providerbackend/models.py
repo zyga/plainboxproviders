@@ -29,7 +29,7 @@ class Repository(models.Model):
     added_on = models.DateTimeField(auto_now_add=True)
     probed_on = models.DateTimeField(null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.url
 
     class Meta:
@@ -171,7 +171,7 @@ class ProviderMetaData(models.Model):
     description = models.TextField(blank=True)
     gettext_domain = models.CharField(max_length=1024, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.pb_id
 
     class Meta:
@@ -190,7 +190,7 @@ class Unit(models.Model):
     provider_metadata = models.ForeignKey(
         ProviderMetaData, verbose_name="related provider")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.pb_id
 
 
@@ -208,5 +208,5 @@ class Job(models.Model):
     requires = models.TextField(null=True)
     shell = models.CharField(max_length=1024, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.unit.pb_id
